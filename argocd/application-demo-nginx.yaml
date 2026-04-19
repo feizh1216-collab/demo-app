@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/feizh1216-collab/demo-app.git
-    targetRevision: HEAD
+    repoURL: git@github.com:feizh1216-collab/demo-app.git
+    targetRevision: main
     path: apps/demo-nginx
   destination:
     server: https://kubernetes.default.svc
