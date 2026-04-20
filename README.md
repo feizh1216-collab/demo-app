@@ -4,9 +4,15 @@
 
 ## 目录结构
 
-- `apps/demo-nginx/deployment.yaml`: Nginx Deployment（`nginx:1.25`）
+- `apps/demo-nginx/rollout.yaml`: Argo Rollouts Rollout（`nginx:1.27`，canary 发布）
 - `apps/demo-nginx/service.yaml`: 对应 ClusterIP Service
+- `apps/demo-nginx/rollout-services.yaml`: Rollout 使用的 stable/canary Services
 - `argocd/application-demo-nginx.yaml`: Argo CD Application 清单
+
+## 说明
+
+`demo-nginx` 现在使用 Argo Rollouts 进行灰度发布（canary）。
+保留 `apps/demo-nginx/service.yaml` 作为统一访问入口，`rollout-services.yaml` 中的 stable/canary Service 由 Rollout 用于灰度阶段管理。
 
 ## 使用前修改
 
@@ -15,8 +21,9 @@
 ## 应用命令
 
 ```bash
-kubectl apply -f apps/demo-nginx/deployment.yaml
+kubectl apply -f apps/demo-nginx/rollout.yaml
 kubectl apply -f apps/demo-nginx/service.yaml
+kubectl apply -f apps/demo-nginx/rollout-services.yaml
 kubectl apply -f argocd/application-demo-nginx.yaml
 ```
 

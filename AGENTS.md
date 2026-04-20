@@ -14,3 +14,5 @@
 - 所有说明写入 README.md
 - 禁止执行 kubectl apply / kubectl delete / kubectl patch 到集群，除非我明确批准
 - 对 Argo CD 的变更，默认只修改 argocd/*.yaml，不调用 argocd CLI 直接改线上应用
+- 涉及发布策略时，优先生成 Argo Rollouts 的 Rollout 资源，而不是 Deployment
+- 禁止执行 kubectl apply / kubectl delete / argocd app sync，除非我明确批准
